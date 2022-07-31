@@ -3,9 +3,9 @@
     <form @submit.prevent id = "loginForm">
       Sign in to vote or propose votes
       <br>
-      <input type="text" class="loginField" placeholder="Address">
+      <input type="text" @input="addressChangeHandler" v-model="address" class="loginField" placeholder="Address">
       <br>
-      <input type="password" class="loginField" placeholder="Password">
+      <input type="password" @input="passwordChangeHandler" v-model="password" class="loginField" placeholder="Password">
       <br>
       <button id="signInBtn">Sign in</button>
     </form>
@@ -19,6 +19,20 @@
 export default {
   name: 'HomePage',
   components: {
+  },
+  data () {
+    return {
+      address: null,
+      password: null
+    }
+  },
+  methods: {
+    addressChangeHandler (event) {
+      this.address = event.target.value
+    },
+    passwordChangeHandler (event) {
+      this.password = event.target.value
+    }
   }
 }
 </script>
@@ -36,8 +50,9 @@ export default {
   font-size: 1.5rem;
   margin:1rem;
   background-color: #CCCCFF;
-  width: 580px;
+  width: 600px;
   height: 50px;
+  font-style: poppins;
 }
 input::placeholder{
   color: gray;
