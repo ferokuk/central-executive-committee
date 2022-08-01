@@ -3,27 +3,28 @@
     <form @submit.prevent id = "loginForm">
       Sign in to vote or propose votes
       <br>
-      <input type="text" @input="addressChangeHandler" v-model="address" class="loginField" placeholder="Address">
+      <input type="text" @input="addressChangeHandler" v-model="address" class="loginField" placeholder="Address" required>
       <br>
-      <input type="password" @input="passwordChangeHandler" v-model="password" class="loginField" placeholder="Password">
+      <input type="password" @input="passwordChangeHandler" v-model="password" class="loginField" placeholder="Password" required>
       <br>
       <button id="signInBtn">Sign in</button>
     </form>
     <p id = "signUpBtnTextAbove">First time here?</p>
-    <button id="signUpBtn">Sign up</button>
+    <RegistrationForm>
+    </RegistrationForm>
   </div>
 </template>
 
 <script>
+import RegistrationForm from './RegistrationForm.vue'
 
 export default {
   name: 'HomePage',
-  components: {
-  },
   data () {
     return {
       address: null,
-      password: null
+      password: null,
+      show: false
     }
   },
   methods: {
@@ -33,7 +34,8 @@ export default {
     passwordChangeHandler (event) {
       this.password = event.target.value
     }
-  }
+  },
+  components: { RegistrationForm }
 }
 </script>
 <style>
@@ -64,20 +66,9 @@ input::placeholder{
   margin-top:1rem;
   background-color: #CCCCFF;
 }
-#signUpBtn{
-  font-size:1.3rem;
-  margin-left:460px;
-  width:120px;
-  height:60px;
-  background-color: #CCCCFF;
-}
 #signUpBtnTextAbove{
+  margin-top:1rem;
   font-size:1.3rem;
-  margin-left:470px;
-}
-#signUpBtn:hover{
-   background-color: #9999FF;
-   cursor: pointer;
 }
 #signInBtn:hover{
    background-color: #9999FF;
