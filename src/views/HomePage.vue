@@ -1,5 +1,5 @@
 <template>
-  <div id="login">
+  <div id="login" v-if="isSignedIn===false">
     <form @submit.prevent id = "loginForm">
       Sign in to vote or propose votes
       <br>
@@ -7,19 +7,72 @@
       <br>
       <input type="password" class="loginField" placeholder="Password">
       <br>
-      <button id="signInBtn">Sign in</button>
+      <button id="signInBtn" @click="signIn">Sign in</button>
     </form>
     <p id = "signUpBtnTextAbove">First time here?</p>
     <button id="signUpBtn">Sign up</button>
   </div>
+  <ProfileView v-else></ProfileView>
 </template>
 
 <script>
+<<<<<<< Updated upstream
 
 export default {
   name: 'HomePage',
   components: {
   }
+=======
+import RegistrationForm from '@/views/RegistrationForm.vue'
+import ProfileView from '@/views/ProfileView.vue'
+import ContractFunc from '@/contractWeb3'
+import w3 from '@/connectWeb3'
+import { resolve } from 'url'
+export default {
+  name: 'HomePage',
+  data () {
+    return {
+      address: null,
+      password: null,
+      contract: null,
+      web3: null,
+      status: null,
+      isSignedIn: false
+    }
+  },
+  async mounted () {
+    this.contract = await ContractFunc
+    this.web3 = w3()
+  },
+  methods: {
+    addressChangeHandler (event) {
+      this.address = event.target.value
+    },
+    passwordChangeHandler (event) {
+      this.password = event.target.value
+    },
+    async signIn () {
+      if(!this.web3.utils.isAddress(this.address.trim())) {
+        alert("Please, check your address!")
+        return
+      }
+      await this.web3.eth.personal.unlockAccount(this.address,"").then(console.log("unlocked"))
+      try{
+        await this.contract.methods
+        .login(this.address,this.password)
+        .send({from:this.address,gas:100000})
+        .then(
+        )
+      }catch (e){
+        alert(e)
+        return
+      }
+      this.status = await this.contract.methods.Users(this.address).call().then(value => value.status),
+      this.isSignedIn = true
+    }
+  },
+  components: { RegistrationForm,ProfileView }
+>>>>>>> Stashed changes
 }
 </script>
 <style>
