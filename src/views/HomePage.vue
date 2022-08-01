@@ -5,7 +5,11 @@
       <br>
       <input type="text" class="loginField" placeholder="Address">
       <br>
+<<<<<<< Updated upstream
       <input type="password" class="loginField" placeholder="Password">
+=======
+      <input type="password" @input="passwordChangeHandler" v-model="password" class="loginField" placeholder="Password" required autocomplete="on">
+>>>>>>> Stashed changes
       <br>
       <button id="signInBtn">Sign in</button>
     </form>
@@ -15,11 +19,41 @@
 </template>
 
 <script>
+<<<<<<< Updated upstream
 
 export default {
   name: 'HomePage',
   components: {
   }
+=======
+import RegistrationForm from '@/views/RegistrationForm.vue'
+import ContractFunc from '@/contractWeb3'
+import w3 from '@/connectWeb3'
+export default {
+  name: 'HomePage',
+  data () {
+    return {
+      address: null,
+      password: null,
+      contract: null,
+      web3: null,
+    }
+  },
+  async mounted () {
+    this.contract = await ContractFunc
+    this.web3 = w3()
+    
+  },
+  methods: {
+    addressChangeHandler (event) {
+      this.address = event.target.value
+    },
+    passwordChangeHandler (event) {
+      this.password = event.target.value
+    }
+  },
+  components: { RegistrationForm }
+>>>>>>> Stashed changes
 }
 </script>
 <style>
