@@ -1,10 +1,4 @@
 <template>
-<<<<<<< Updated upstream
-  <div>
-    <h1>This is an about page</h1>
-  </div>
-</template>
-=======
   <div class = "content">
     <h1 style="margin-bottom:30px;">This site represents a system that has two types of users: <span class="green">members</span> and <span class="red">elders</span>. <br>
   <span class="red">Elders</span> has the ability to make votes public and, if they are accepted, they will be voted on by <span class="green">members</span>. <br>
@@ -27,4 +21,4 @@
   color:red;
 }
 </style>
->>>>>>> Stashed changes
+

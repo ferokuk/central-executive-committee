@@ -3,31 +3,23 @@
     <form @submit.prevent id = "loginForm">
       Sign in to vote or propose votes
       <br>
-      <input type="text" class="loginField" placeholder="Address">
+      <input type="text" class="loginField" placeholder="Address" v-model="address" @input="addressChangeHandler">
       <br>
-      <input type="password" class="loginField" placeholder="Password">
+      <input type="password" class="loginField" placeholder="Password" v-model="password" @input="passwordChangeHandler" autocomplete="on">
       <br>
       <button id="signInBtn" @click="signIn">Sign in</button>
     </form>
-    <p id = "signUpBtnTextAbove">First time here?</p>
-    <button id="signUpBtn">Sign up</button>
+   <RegistrationForm></RegistrationForm>
   </div>
   <ProfileView v-else></ProfileView>
 </template>
 
 <script>
-<<<<<<< Updated upstream
 
-export default {
-  name: 'HomePage',
-  components: {
-  }
-=======
 import RegistrationForm from '@/views/RegistrationForm.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import ContractFunc from '@/contractWeb3'
 import w3 from '@/connectWeb3'
-import { resolve } from 'url'
 export default {
   name: 'HomePage',
   data () {
@@ -52,7 +44,7 @@ export default {
       this.password = event.target.value
     },
     async signIn () {
-      if(!this.web3.utils.isAddress(this.address.trim())) {
+      if(!this.web3.utils.isAddress(this.address)) {
         alert("Please, check your address!")
         return
       }
@@ -71,8 +63,8 @@ export default {
       this.isSignedIn = true
     }
   },
-  components: { RegistrationForm,ProfileView }
->>>>>>> Stashed changes
+  components: { RegistrationForm, ProfileView, RegistrationForm }
+
 }
 </script>
 <style>
