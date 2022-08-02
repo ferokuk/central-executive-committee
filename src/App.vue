@@ -1,3 +1,4 @@
+
 <template>
   <nav>
     <router-link to="/">Profile</router-link> |
@@ -26,3 +27,4 @@ nav a.router-link-exact-active {
   color: #CC6666;
 }
 </style>
+
