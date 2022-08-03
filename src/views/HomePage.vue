@@ -1,3 +1,4 @@
+
 <template>
   <div id="login" v-if="isSignedIn===false">
     <form @submit.prevent id = "loginForm">
@@ -9,13 +10,12 @@
       <br>
       <button id="signInBtn" @click="signIn">Sign in</button>
     </form>
-   <RegistrationForm></RegistrationForm>
+    <RegistrationForm></RegistrationForm>
   </div>
   <ProfileView v-else></ProfileView>
 </template>
 
 <script>
-
 import RegistrationForm from '@/views/RegistrationForm.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import ContractFunc from '@/contractWeb3'
@@ -64,7 +64,6 @@ export default {
     }
   },
   components: { RegistrationForm, ProfileView, RegistrationForm }
-
 }
 </script>
 <style>
@@ -114,3 +113,4 @@ input::placeholder{
    cursor: pointer;
 }
 </style>
+

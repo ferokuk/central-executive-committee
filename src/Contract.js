@@ -85,6 +85,13 @@ const ABI = [
 		"type": "event"
 	},
 	{
+		"inputs": [],
+		"name": "logout",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -144,6 +151,12 @@ const ABI = [
 				"internalType": "string",
 				"name": "info",
 				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "result",
+				"type": "string"
 			}
 		],
 		"name": "VoteAccepted",
@@ -156,6 +169,12 @@ const ABI = [
 				"indexed": false,
 				"internalType": "string",
 				"name": "name",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "result",
 				"type": "string"
 			}
 		],
@@ -182,6 +201,12 @@ const ABI = [
 				"internalType": "address",
 				"name": "by",
 				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "result",
+				"type": "string"
 			}
 		],
 		"name": "VoteProposing",
@@ -255,6 +280,19 @@ const ABI = [
 				"internalType": "string",
 				"name": "",
 				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "currentAccount",
+		"outputs": [
+			{
+				"internalType": "address payable",
+				"name": "",
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",
@@ -489,5 +527,6 @@ const ABI = [
 		"type": "function"
 	}
 ]
-const address = '0x5DE7646cba8D6FAf034F0Dfbf3B26E86b303fdF9'
+const address = '0x0F1181a98007D9Da30E8896a7021Ab06cD12cFfE'
+
 export {ABI,address}
