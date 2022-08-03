@@ -8,7 +8,7 @@
     <div class="votes">
     <div class="votes-text"> Check approved votes </div>
       <br>
-      <input placeholder="Enter the name of vote" type="text" v-model="namePending" @change="namePendingChangeHandler">
+      <input placeholder="Enter the name of vote" type="text" v-model="nameApproved" @change="namePendingChangeHandler">
       <button @click="checkApprovedVotes">Check</button>
     </div>
     <br>
@@ -22,7 +22,7 @@ export default{
     data () {
       return {
         nameAccepted: null,
-        namePending: null,
+        nameApproved: null,
         contract: null,
       }
     },
@@ -31,7 +31,7 @@ export default{
         this.nameAccepted = event.target.value
       },
       namePendingChangeHandler(event) {
-        this.namePending = event.target.value
+        this.nameApproved = event.target.value
       },
       async checkAcceptedVotes () {
         if(this.name === null){
@@ -49,7 +49,7 @@ export default{
             return
         }
         this.contract.methods
-        .Votes(this.namePending)
+        .Votes(this.nameApproved)
         .call()
         .then(value => this.dataParser(value.name,value.information,value.votesNeeded,value.votesAmount,value.percentForApproval))
       },
