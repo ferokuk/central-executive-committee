@@ -1,3 +1,4 @@
+
 <template>
      <button id="signUpBtn" @click="showRegistrationForm">Sign up</button>
      <div v-if="openForm" class="form">
@@ -25,8 +26,6 @@
 </template>
 
 <script>
-import ContractFunc from '@/contractWeb3'
-import w3 from '@/connectWeb3'
 export default {
   name: 'RegistrationForm',
   data () {
@@ -35,14 +34,8 @@ export default {
       password: null,
       name: null,
       status: null,
-      openForm: false,
-      web3: null,
+      openForm: false
     }
-  },
-  async mounted () {
-    this.contract = await ContractFunc
-    this.web3 = w3()
-    
   },
   methods: {
     showRegistrationForm () {
@@ -60,34 +53,26 @@ export default {
     statusChangeHandler (event) {
       this.status = event.target.value
     },
-   async signUp () {
-      if(!this.web3.utils.isAddress(this.address)){
-        alert("Please, check your address!")
-        return
-      }
-      try{
+    signUp () {
+      console.log(this.address, this.password, this.name, this.status)
       this.showRegistrationForm()
-      await this.web3.eth.personal
-      .unlockAccount(this.address,"")
-      .then(console.log("unlocked"))
-
-      await this.contract.methods
-      .createUser(this.name,this.password,this.address,this.status)
-      .send({from:this.address,gas:300000})
-      .then(console.log("created"))
       this.address = this.password = this.name = this.status = null
-      }catch (e) {
-        alert(e)
-        await this.web3.eth.personal.lockAccount(this.address)
-        return
-      }
-      await this.web3.eth.personal.lockAccount(this.address)
     }
   }
 }
 </script>
 
 <style scoped>
+#signUpBtn{
+  font-size:1.3rem;
+  width:120px;
+  height:60px;
+  background-color: #CCCCFF;
+}
+#signUpBtn:hover{
+   background-color: #9999FF;
+   cursor: pointer;
+}
 #createUserBtn{
   font-size:1.3rem;
   width:120px;
@@ -151,3 +136,4 @@ input::placeholder{
     padding: 0;
 }
 </style>
+

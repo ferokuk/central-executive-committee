@@ -1,3 +1,4 @@
+
 const ABI = [
 	{
 		"anonymous": false,
@@ -39,12 +40,6 @@ const ABI = [
 				"internalType": "string",
 				"name": "info",
 				"type": "string"
-			},
-			{
-				"indexed": false,
-				"internalType": "string",
-				"name": "result",
-				"type": "string"
 			}
 		],
 		"name": "VoteAccepted",
@@ -57,12 +52,6 @@ const ABI = [
 				"indexed": false,
 				"internalType": "string",
 				"name": "name",
-				"type": "string"
-			},
-			{
-				"indexed": false,
-				"internalType": "string",
-				"name": "result",
 				"type": "string"
 			}
 		],
@@ -89,55 +78,10 @@ const ABI = [
 				"internalType": "address",
 				"name": "by",
 				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "string",
-				"name": "result",
-				"type": "string"
 			}
 		],
 		"name": "VoteProposing",
 		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "Users",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "name",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "password",
-				"type": "string"
-			},
-			{
-				"internalType": "address payable",
-				"name": "adr",
-				"type": "address"
-			},
-			{
-				"internalType": "bool",
-				"name": "isExist",
-				"type": "bool"
-			},
-			{
-				"internalType": "string",
-				"name": "status",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
 	},
 	{
 		"inputs": [
@@ -295,19 +239,6 @@ const ABI = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "currentAccount",
-		"outputs": [
-			{
-				"internalType": "address payable",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -334,13 +265,6 @@ const ABI = [
 			}
 		],
 		"name": "login",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "logout",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -444,88 +368,8 @@ const ABI = [
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "user",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "name",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "password",
-				"type": "string"
-			},
-			{
-				"internalType": "address payable",
-				"name": "adr",
-				"type": "address"
-			},
-			{
-				"internalType": "bool",
-				"name": "isExist",
-				"type": "bool"
-			},
-			{
-				"internalType": "string",
-				"name": "status",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "vote",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "name",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "information",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "percentForApproval",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "votesAmount",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "votesNeeded",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "expirationDate",
-				"type": "string"
-			},
-			{
-				"internalType": "bool",
-				"name": "isApproved",
-				"type": "bool"
-			},
-			{
-				"internalType": "bool",
-				"name": "isExist",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
 	}
 ]
-const address = '0x64d233fE1Db7Ea920361795d8720361B38b5F5E1'
+const address = '0xd9145CCE52D386f254917e481eB44e9943F39138'
 export {ABI,address}
+
