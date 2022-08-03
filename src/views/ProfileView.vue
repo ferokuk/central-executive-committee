@@ -1,11 +1,3 @@
-
-<template>
-    
-</template>
-<script>
-</script>
-<style>
-=======
 <template>
     <h1> This is your profile.</h1>
     <div class="profile-content">

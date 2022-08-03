@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-# central-executive-committee
-=======
 # committee
 
 ## Project setup
@@ -25,4 +22,3 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
->>>>>>> Stashed changes

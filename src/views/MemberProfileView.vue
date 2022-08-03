@@ -1,10 +1,3 @@
-<<<<<<< Updated upstream
-<template>
-</template>
-<script>
-</script>
-<style>
-=======
 <template>
     <div class="vote-input">
         <input type="text" class="vote-name" v-model="name" @change="nameChangeHandler" placeholder="Enter the name of the vote">
@@ -83,5 +76,4 @@ export default {
 .vote-input{
     margin-top: 40px;
 }
->>>>>>> Stashed changes
 </style>
