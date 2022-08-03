@@ -1,3 +1,4 @@
+
 <template>
      <button id="signUpBtn" @click="showRegistrationForm">Sign up</button>
      <div v-if="openForm" class="form">
@@ -135,3 +136,4 @@ input::placeholder{
     padding: 0;
 }
 </style>
+

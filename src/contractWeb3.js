@@ -1,3 +1,4 @@
+
 import w3 from '@/connectWeb3'
 import {ABI,address} from '@/Contract.js'
 
@@ -8,3 +9,4 @@ const getContract = new Promise(function (resolve){
     resolve(contract)
 })
 export default getContract;
+

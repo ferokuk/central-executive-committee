@@ -1,3 +1,4 @@
+
 <template>
   <div id="login">
     <form @submit.prevent id = "loginForm">
@@ -9,8 +10,7 @@
       <br>
       <button id="signInBtn">Sign in</button>
     </form>
-    <p id = "signUpBtnTextAbove">First time here?</p>
-    <button id="signUpBtn">Sign up</button>
+    <RegistrationForm></RegistrationForm>
   </div>
 </template>
 
@@ -91,3 +91,4 @@ input::placeholder{
    cursor: pointer;
 }
 </style>
+

@@ -1,3 +1,4 @@
+
 <template>
   <div class = "content">
     <h1 style="margin-bottom:20px">This site represents a system that has two types of users: <font style="color:green">members</font> and <font style="color:red">elders</font>. <br>

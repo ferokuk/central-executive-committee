@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/HomePage.vue'
-
+import AboutView from '../views/AboutView'
 const routes = [
   {
     path: '/',
@@ -10,7 +10,7 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: AboutView
   }
 ]
 
