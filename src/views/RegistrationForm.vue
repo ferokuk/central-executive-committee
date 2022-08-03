@@ -1,4 +1,3 @@
-
 <template>
      <button id="signUpBtn" @click="showRegistrationForm">Sign up</button>
      <div v-if="openForm" class="form">
@@ -26,6 +25,8 @@
 </template>
 
 <script>
+import ContractFunc from '@/contractWeb3'
+import w3 from '@/connectWeb3'
 export default {
   name: 'RegistrationForm',
   data () {
@@ -34,8 +35,14 @@ export default {
       password: null,
       name: null,
       status: null,
-      openForm: false
+      openForm: false,
+      web3: null,
     }
+  },
+  async mounted () {
+    this.contract = await ContractFunc
+    this.web3 = w3()
+    
   },
   methods: {
     showRegistrationForm () {
@@ -53,10 +60,25 @@ export default {
     statusChangeHandler (event) {
       this.status = event.target.value
     },
-    signUp () {
+   async signUp () {
+      if(!this.web3.utils.isAddress(this.address.trim())){
+        alert("Please, check your address!")
+        return
+      }
       console.log(this.address, this.password, this.name, this.status)
+      try{
       this.showRegistrationForm()
+      await this.web3.eth.personal.unlockAccount(this.address,"").then(console.log("unlocked"))
+      await this.contract.methods
+      .createUser(this.name,this.password,this.address,this.status)
+      .send({from:this.address,gas:300000})
+      .then(console.log("created"))
       this.address = this.password = this.name = this.status = null
+      }catch (e) {
+        alert(e)
+        await this.web3.eth.personal.lockAccount(this.address)
+        return
+      }
     }
   }
 }
@@ -136,4 +158,3 @@ input::placeholder{
     padding: 0;
 }
 </style>
-

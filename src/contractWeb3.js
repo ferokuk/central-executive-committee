@@ -8,5 +8,6 @@ const getContract = new Promise(function (resolve){
     console.log(contract)
     resolve(contract)
 })
+
 export default getContract;
 

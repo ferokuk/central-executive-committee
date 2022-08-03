@@ -7,3 +7,4 @@ const getWeb3 = function getw3 () {
 }
 
 export default getWeb3
+
