@@ -69,7 +69,6 @@ export default{
             alert("Invalid percent for approval!")
             return
         }
-        this.changeOpenForm()
         await this.web3.eth.personal.unlockAccount(this.address,"")
         await this.contract.methods
         .proposeVote(this.name,this.info,this.amountVotesNeeded,this.expirationDate,this.percentForApproval)

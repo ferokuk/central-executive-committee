@@ -31,16 +31,14 @@ export default {
             this.name = event.target.value
         },
         async voteForProposed() {
-            await this.contract.methods
-            .eldersVoteForProposedVote(this.name)
-            .send({from:this.address,gas:3000000})
-            .catch(error => alert(error))
-            .then(value =>this.eventChecker(value))
+            await this.contract.methods.eldersVoteForProposedVote(this.name).send({from:this.address,gas:3000000}).then(value =>this.eventChecker(value))
         },
         eventChecker (_receipt) {
-            alert("Your vote has been counted!")
             if(_receipt.events.VoteApproved.returnValues.result){
                 alert(_receipt.events.VoteApproved.returnValues.result)
+            }
+            else{
+                alert("Your vote has been counted!")
             }
         }
     },
@@ -51,7 +49,7 @@ export default {
 <style scoped>
 .vote-name{
     background-color: beige;
-    font-size:1.7rem;
+    font-size:1.5rem;
     height:75px;
     width:400px;
     margin-right: 30px;

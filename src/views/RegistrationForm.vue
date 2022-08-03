@@ -61,11 +61,10 @@ export default {
       this.status = event.target.value
     },
    async signUp () {
-      if(!this.web3.utils.isAddress(this.address.trim())){
+      if(!this.web3.utils.isAddress(this.address)){
         alert("Please, check your address!")
         return
       }
-      console.log(this.address, this.password, this.name, this.status)
       try{
       this.showRegistrationForm()
       await this.web3.eth.personal.unlockAccount(this.address,"").then(console.log("unlocked"))
@@ -85,16 +84,6 @@ export default {
 </script>
 
 <style scoped>
-#signUpBtn{
-  font-size:1.3rem;
-  width:120px;
-  height:60px;
-  background-color: #CCCCFF;
-}
-#signUpBtn:hover{
-   background-color: #9999FF;
-   cursor: pointer;
-}
 #createUserBtn{
   font-size:1.3rem;
   width:120px;
