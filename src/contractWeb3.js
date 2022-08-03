@@ -10,4 +10,3 @@ const getContract = new Promise(function (resolve){
 })
 
 export default getContract;
-
