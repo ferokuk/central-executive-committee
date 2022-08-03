@@ -527,4 +527,6 @@ const ABI = [
 		"type": "function"
 	}
 ]
-const address = '0x64d233fE1Db7Ea920361795d8720361B38b5F5E1'
+const address = '0x0F1181a98007D9Da30E8896a7021Ab06cD12cFfE'
+
+export {ABI,address}

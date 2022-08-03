@@ -1,3 +1,4 @@
+
 var Web3 = require('web3')
 
 const getWeb3 = function getw3 () {
@@ -6,3 +7,4 @@ const getWeb3 = function getw3 () {
 }
 
 export default getWeb3
+
