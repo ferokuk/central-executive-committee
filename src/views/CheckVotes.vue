@@ -49,7 +49,7 @@ export default{
             return
         }
         this.contract.methods
-        .Votes(this.nameApproved)
+        .approvedVotes(this.nameApproved)
         .call()
         .then(value => this.dataParser(value.name,value.information,value.votesNeeded,value.votesAmount,value.percentForApproval))
       },
@@ -58,6 +58,9 @@ export default{
             alert("This vote doesn't exist!")
             return
         }
+        this.dataAlert(name,info,vN,vA,pFA)
+      },
+      dataAlert(name,info,vN,vA,pFA){
         alert(
         `
         name: ${name}
@@ -67,7 +70,8 @@ export default{
         percent for approval: ${pFA}`)
       }
     }
-}
+  }
+
 </script>
 <style scoped>
 .votes{

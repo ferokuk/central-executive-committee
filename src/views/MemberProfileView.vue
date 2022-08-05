@@ -3,12 +3,12 @@
         <input type="text" class="vote-name" v-model="name" @change="nameChangeHandler" placeholder="Enter the name of the vote">
         <button class="send-vote" @click="membersVote">Vote</button>
     </div>
-    <CheckAcceptedVotes></CheckAcceptedVotes>
+    <CheckVotes></CheckVotes>
 </template>
 <script>
 import ContractFunc from '@/contractWeb3'
 import w3 from '@/connectWeb3'
-import CheckAcceptedVotes from './CheckAcceptedVotes.vue'
+import CheckVotes from './CheckVotes.vue'
 export default {
     props: {
         address: String
@@ -31,6 +31,10 @@ export default {
             this.name = event.target.value
         },
         async membersVote() {
+            if(this.name === null){
+                alert("Please, enter a valid name!")
+                return
+            }
             try{
             await this.contract.methods
             .membersVote(this.name)
@@ -43,16 +47,23 @@ export default {
         },
         eventChecker (_receipt) {
             if(_receipt.events.VoteAccepted == undefined){
-                alert("Your vote has been counted")
+                this.eventAlert(undefined,undefined)
                 return
             }
             if(_receipt.events.VoteAccepted.returnValues.result === "Vote has been successfully accepted!"){
-                alert("Your vote has been counted")
-                alert(_receipt.events.VoteAccepted.returnValues.name + " " +_receipt.events.VoteAccepted.returnValues.result)
+                this.eventAlert(_receipt.events.VoteAccepted.returnValues.name,_receipt.events.VoteAccepted.returnValues.result)
+                return
              }
+        },
+        eventAlert(_name,_result){
+            alert("Your vote has been counted")
+            if(_name !== undefined && _result !== undefined){
+              alert(_name + " " +_result)
+            }
+
         }
     },
-    components:{CheckAcceptedVotes}
+    components:{CheckVotes}
 }
 </script>
 <style scoped>
