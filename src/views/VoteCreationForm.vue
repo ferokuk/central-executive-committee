@@ -10,7 +10,7 @@
               <textarea id="info" cols="10" rows="10" placeholder="Write some information" @input="infoChangeHandler" v-model="info"></textarea>
               <!-- <input type="text" class="info" placeholder="Write here some information" required v-model="info" @input="infoChangeHandler"> -->
               <br>
-              <input type="text" placeholder="Amount of votes needed to be approved" required v-model="amountVotesNeeded" @input="expirationDateChangeHandler">
+              <input type="text" placeholder="Amount of votes needed to be approved" required v-model="amountVotesNeeded" @input="amountVotesNeededChangeHandler">
               note: this only applies to members.
               <br>
               <input type="date" placeholder="Expiration date" required v-model="expirationDate" @input="expirationDateChangeHandler">
@@ -65,15 +65,28 @@ export default{
         this.percentForApproval = event.target.value
     },
     async proposeVote () {
+        if(this.name === null || this.info === '' || this.amountVotesNeeded === null || this.percentForApproval === null || this.expirationDate === ''){
+          alert("Please, fill in all fields!")
+          return
+        }
+        if (isNaN(this.amountVotesNeeded) || isNaN(this.percentForApproval)) {
+            alert("Amount of votes and percent for approval should be integer!")
+            return
+        }
         if(this.percentForApproval > 100 || this.percentForApproval < 0){
             alert("Invalid percent for approval!")
             return
         }
-        this.changeOpenForm()
-        await this.contract.methods
+        try{
+          await this.contract.methods
         .proposeVote(this.name,this.info,this.amountVotesNeeded,this.expirationDate,this.percentForApproval)
         .send({from:this.web3.eth.defaultAccount,gas:3000000})
         .then(value => alert(value.events.VoteProposing.returnValues.result))
+        }catch(error){
+          alert(error)
+          return
+        }
+        this.changeOpenForm()
     }
   }
 }
