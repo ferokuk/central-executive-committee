@@ -11,6 +11,7 @@
               <!-- <input type="text" class="info" placeholder="Write here some information" required v-model="info" @input="infoChangeHandler"> -->
               <br>
               <input type="text" placeholder="Amount of votes needed to be approved" required v-model="amountVotesNeeded" @input="expirationDateChangeHandler">
+              note: this only applies to members.
               <br>
               <input type="date" placeholder="Expiration date" required v-model="expirationDate" @input="expirationDateChangeHandler">
               <br>
@@ -26,9 +27,6 @@
 import ContractFunc from '@/contractWeb3'
 import w3 from '@/connectWeb3'
 export default{
-  props: {
-    address: String
-  },
   data () {
     return {
         name: null,

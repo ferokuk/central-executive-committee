@@ -1,6 +1,6 @@
 <template>
     <div>
-        <VoteCreationForm :address="address"></VoteCreationForm>
+        <VoteCreationForm></VoteCreationForm>
     </div>
     <div class="vote-input">
         <input class="vote-name" type="text" placeholder="Enter the name of the vote" v-model="name" @input="nameChangeHandler">
@@ -12,13 +12,13 @@
       <input class="vote-name" placeholder="Enter the name of vote" type="text" v-model="nameProposedVote" @change="nameProposedVoteChangeHandler">
       <button class="send-vote" @click="checkProposedVotes">Check</button>
     </div>
-    <CheckAcceptedVotes></CheckAcceptedVotes>
+    <CheckVotes></CheckVotes>
 </template>
 <script>
 import ContractFunc from '@/contractWeb3'
 import w3 from '@/connectWeb3'
 import VoteCreationForm from './VoteCreationForm.vue'
-import CheckAcceptedVotes from './CheckAcceptedVotes.vue'
+import CheckVotes from './CheckVotes.vue'
 export default {
     props: {
         address: String
@@ -51,7 +51,7 @@ export default {
             .send({from:this.web3.eth.defaultAccount,gas:3000000})
             .then(value =>this.eventChecker(value))
             }catch(error){
-                alert("You have already voted!")
+                alert(error)
                 return
             }
         },
@@ -86,7 +86,7 @@ export default {
       }
     },
 
-    components: { VoteCreationForm,CheckAcceptedVotes }
+    components: { VoteCreationForm,CheckVotes }
 }
 </script>
 <style scoped>
