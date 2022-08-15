@@ -79,6 +79,7 @@ contract Committee{
     function login(address payable _adr, string memory _pasw) external
     {
        require(Users[_adr].isExist, "This account doesn't exist!");
+       
        require(keccak256(abi.encodePacked((Users[_adr].password))) == keccak256(abi.encodePacked((_pasw))), "Invalid password!");
        currentAccount = _adr;
        emit LoginInformation("Logged in successfully!");
@@ -94,7 +95,9 @@ contract Committee{
     external onlyElder(Users[currentAccount].status)
     {
         require(_percentForApproval <= 100 && _percentForApproval >= 0, "Invalid percents for approval!");
+        
         require(!proposedVotes[_name].isExist && !approvedVotes[_name].isExist, "This vote has already been proposed!");
+        
         require(eldersCount >= _amountVotes && membersCount >= _amountVotes, "Too much votes needed! We don't have that much elders or/and members!");
         vote = Vote(_name, _info, _percentForApproval, 1, _amountVotes,  _expirationDate, false, true);
         proposedVotes[_name] = vote;
@@ -105,6 +108,7 @@ contract Committee{
     function eldersVoteForProposedVote(string memory _name) external onlyElder(Users[currentAccount].status)
     {
         require(proposedVotes[_name].isExist && !proposedVotes[_name].isApproved, "This voting doesn't exist or it has been already approved!");
+        
         require(!votedPeople[_name][currentAccount], "You have already voted!");
         proposedVotes[_name].votesAmount ++ ;
         if(proposedVotes[_name].votesAmount >= eldersCount*51/100)
@@ -120,6 +124,7 @@ contract Committee{
     function membersVote(string memory _name) external onlyMember(Users[currentAccount].status)
     {
         require(approvedVotes[_name].isExist && approvedVotes[_name].isApproved, "This voting doesn't exist, it hasn't been approved yet or already accepted!");
+        
         require(!votedPeople[_name][currentAccount], "You have already voted!");
         approvedVotes[_name].votesAmount ++ ;
         votedPeople[_name][currentAccount] = true;
