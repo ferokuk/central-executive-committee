@@ -77,12 +77,15 @@ export default{
             alert("Invalid percent for approval!")
             return
         }
-        try{
+        try
+        {
           await this.contract.methods
         .proposeVote(this.name,this.info,this.amountVotesNeeded,this.expirationDate,this.percentForApproval)
         .send({from:this.web3.eth.defaultAccount,gas:3000000})
         .then(value => alert(value.events.VoteProposing.returnValues.result))
-        }catch(error){
+        }
+        catch(error)
+        {
           alert(error)
           return
         }
